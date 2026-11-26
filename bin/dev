@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+# Starts Rails (web + API) and the Vite dev server (HMR) together. Open http://localhost:3000
+if ! gem list foreman -i --silent; then
+  echo "Installing foreman..."
+  gem install foreman
+fi
+export PORT="${PORT:-3000}"
+exec foreman start -f Procfile.dev "$@"

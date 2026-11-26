@@ -1,0 +1,9 @@
+.git
+log/*
+tmp/*
+coverage/
+node_modules/
+public/vite*
+docs/
+config/master.key
+.env*

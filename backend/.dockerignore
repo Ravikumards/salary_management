@@ -1,7 +1,0 @@
-.git
-log/*
-tmp/*
-coverage/
-spec/
-config/master.key
-.env*
