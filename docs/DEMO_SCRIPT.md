@@ -1,6 +1,6 @@
 # Video demo script (about 5 minutes)
 
-**Setup:** run `bin/rails db:seed` (10k employees), then start the API and UI. Have a terminal open next to the browser.
+**Setup:** run `bin/rails db:seed` (10k employees), then run `bin/dev` and open http://localhost:3000. Have a terminal open next to the browser.
 
 1. **Seeding (30s)**
    - Run `time bin/rails db:seed`. It prints "Seeded 10000 employees in ~0.9s".
@@ -24,6 +24,6 @@
    - "Job title in country": pick Data Scientist. Show the average, the range and "+30% vs. country average".
    - Pay by job title and department tables. Click a row in Countries compared to switch country.
 6. **Code and tests (45s)**
-   - Run `bundle exec rspec` (80 green, about 99% coverage) and `npm test` (32 green).
+   - Run `bundle exec rspec` (83 green, about 99% coverage) and `npm test` (32 green).
    - Show `git log --oneline`, with its red and green TDD commits.
    - Briefly show `docs/`.

@@ -2,6 +2,7 @@
 
 | Decision | Chosen | Alternatives | Why |
 |---|---|---|---|
+| App shape | **One Rails web app**, with React bundled by `vite_rails` | A separate API and SPA (two deploys, CORS) | One codebase, deploy and origin. No CORS and no proxy. HMR in development through `bin/dev`. The API stays a clean `/api/v1` JSON boundary, so a mobile client could use it later. |
 | Salary currency | Store **annual USD** in `decimal(12,2)` | Local currency plus a `currency` column and FX table | Country comparisons and averages are correct only in one currency. Multi-currency adds FX rates, rate dates and rounding policy, which is out of scope for a minimal tool. The next step would be a `salary_local` and `currency` pair with a daily FX table, keeping USD as the reporting currency. |
 | Money type | `DECIMAL`, serialized as JSON number | Integer cents, or string | Exact in the database. A JSON number is convenient for the UI, and values stay under 1e8, far inside the exactly representable range of a float. |
 | Country | ISO-3166 alpha-2 code, validated | Countries table with a foreign key | Codes are stable and compact, and `Intl.DisplayNames` renders names in the UI for free. |

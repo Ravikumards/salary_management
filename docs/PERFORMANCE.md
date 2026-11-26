@@ -55,5 +55,5 @@ EXPLAIN SELECT job_title, COUNT(*), AVG(salary) FROM employees WHERE country='IN
 
 ## Tests
 
-- RSpec: 80 examples in about 1 s, using transactional fixtures (the seeder spec is the only exception).
+- RSpec: 83 examples in about 1 s, using transactional fixtures (the seeder spec is the only exception).
 - Vitest: 32 tests in about 2 s, with no network.

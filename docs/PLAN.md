@@ -19,7 +19,7 @@ The org has 10k employees, so the list must be server-paginated and searchable. 
 | 2b. Average salary for a job title in a country | Insights page, "Job title in country" card. `GET /insights/job_title` |
 | 2c. Other useful metrics | Median, p25 and p75 (a salary-spread strip), headcount, payroll, job-title and department breakdowns, a comparison across countries, the highest-paying titles, employment mix, and a job title's % difference from the country average |
 | Seed 10k employees from first_names.txt and last_names.txt, with performance in mind | `EmployeeSeeder`: `insert_all` batches, a single transaction, TRUNCATE and a seeded RNG. About 0.9s for 10k |
-| Unit tests that are fast, deterministic and easy to understand | 80 RSpec examples (about 1s) and 32 Vitest tests. Known datasets with exact expected numbers, and no network in the UI tests |
+| Unit tests that are fast, deterministic and easy to understand | 83 RSpec examples (about 1s) and 32 Vitest tests. Known datasets with exact expected numbers, and no network in the UI tests |
 | Incremental commits | A red commit (spec) then a green commit (implementation) for each backend unit. See `git log` |
 
 ## TDD sequence followed

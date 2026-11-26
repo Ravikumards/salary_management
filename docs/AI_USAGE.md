@@ -26,8 +26,9 @@ These are examples of course-corrections caught by running the code rather than 
 | A heredoc wrote to `app/services/` before the directory existed, so the file was silently missing | The suite still failed with "uninitialized constant" | Created the directory and rewrote the file |
 | MUI v9 removed system props on `Stack` (`alignItems`, etc.) and renamed the `DeleteOutline` icon | `tsc` in `npm run build`, and a Vite import error | Moved the props to `sx` and used `DeleteOutlined` |
 | setState-in-effect patterns (resetting the form, defaulting the country, the loading flag) | oxlint `react(set-state-in-effect)` | Remount by `key`, derive the value during render, and derive `loading` from a request key |
-| Port 3000 was already taken by an unrelated local app, so the proxy returned someone else's error page | Manual end-to-end check | Made the Vite proxy target configurable (`API_PROXY_TARGET`) |
+| Port 3000 was already taken by an unrelated local app, so the proxy returned someone else's error page | Manual end-to-end check | Ran this app on another port (`bin/rails s -p 3001`) and left the user's process alone |
 | MySQL `TRUNCATE` commits implicitly, which would break transactional tests | Design review while writing the seeder spec | The seeder spec disables transactional tests and cleans up explicitly |
+| The first version had a separate `backend/` API and a separate `frontend/` SPA. The reviewer pointed out that it should be **one web application** | Human review | Restructured into a single Rails app with `vite_rails`: React lives in `app/frontend/`, Rails serves the shell and the API, and CORS, nginx and the second Dockerfile are gone. The change was test-first: `spec/requests/home_spec.rb` was written red before the wiring |
 
 ## Guardrails used
 
