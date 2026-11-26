@@ -1,0 +1,22 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8mb4
+  collation: utf8mb4_unicode_ci
+  max_connections: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host: <%= ENV.fetch("DB_HOST", "127.0.0.1") %>
+  port: <%= ENV.fetch("DB_PORT", 3306) %>
+  username: <%= ENV.fetch("DB_USERNAME", "root") %>
+  password: <%= ENV.fetch("DB_PASSWORD", "") %>
+
+development:
+  <<: *default
+  database: salary_management_development
+
+test:
+  <<: *default
+  database: salary_management_test
+
+production:
+  <<: *default
+  url: <%= ENV["DATABASE_URL"] %>
+  database: <%= ENV.fetch("DB_NAME", "salary_management_production") %>
