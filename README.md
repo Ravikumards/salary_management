@@ -97,3 +97,6 @@ docs/                               design artifacts
 - [docs/AI_USAGE.md](docs/AI_USAGE.md): how AI was used and how its output was verified
 - [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md): how to deploy
 - [docs/DEMO_SCRIPT.md](docs/DEMO_SCRIPT.md): walkthrough for the video demo
+- [docs/PROMPTS.md](docs/PROMPTS.md): the prompts given to the AI tool, word for word
+
+Each document is also available as a rendered PNG, with diagrams drawn, in [`docs/images/`](docs/images/). For example, [ARCHITECTURE.png](docs/images/ARCHITECTURE.png) and [PROMPTS.png](docs/images/PROMPTS.png).

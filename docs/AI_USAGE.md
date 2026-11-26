@@ -4,7 +4,7 @@ This solution was built with **Claude Code** (an agentic CLI) acting as a pair p
 
 ## Workflow
 
-1. **Requirement intake:** the assessment PDF was given to the agent with this prompt:
+1. **Requirement intake:** the assessment PDF was given to the agent with this prompt. All prompts are recorded word for word in [PROMPTS.md](PROMPTS.md).
    > "take this requirement, build ror application with mysql db, frontend react, follow test driven approach, build rspec, test it and also include artifacts as well"
 2. **Plan first:** the agent produced a written plan, which the human approved before any feature code was written. It covered the data model, API surface, indexing strategy, seeder design, TDD order and what was out of scope. The approved plan became `docs/PLAN.md`.
 3. **Red, then green, then commit:** for every backend unit, the agent wrote the spec first, ran it and confirmed it failed, then committed the red spec. It then implemented the unit, ran the full suite and committed the green result. `git log` shows this pattern.
