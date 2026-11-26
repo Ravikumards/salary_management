@@ -8,7 +8,7 @@ module Api
         render json: { error: "#{e.model || 'Record'} not found" }, status: :not_found
       end
 
-      rescue_from ActionController::ParameterMissing do |e|
+      rescue_from ActionController::ParameterMissing, ActionController::BadRequest do |e|
         render json: { error: e.message }, status: :bad_request
       end
 
