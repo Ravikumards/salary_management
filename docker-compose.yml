@@ -1,0 +1,40 @@
+# One-command local "production-like" stack:
+#   docker compose up --build
+#   docker compose exec api bin/rails db:seed      # 10,000 employees
+# Then open http://localhost:8080
+services:
+  db:
+    image: mysql:8.4
+    environment:
+      MYSQL_ROOT_PASSWORD: salary
+      MYSQL_DATABASE: salary_management_production
+    volumes:
+      - db_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-psalary"]
+      interval: 5s
+      retries: 20
+
+  api:
+    build: ./backend
+    environment:
+      DB_HOST: db
+      DB_USERNAME: root
+      DB_PASSWORD: salary
+      DB_NAME: salary_management_production
+      SECRET_KEY_BASE: change-me-in-real-deployments-0123456789abcdef0123456789abcdef
+      FORCE_SSL: "false"
+      CORS_ORIGINS: http://localhost:8080
+    depends_on:
+      db:
+        condition: service_healthy
+
+  web:
+    build: ./frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      - api
+
+volumes:
+  db_data:
