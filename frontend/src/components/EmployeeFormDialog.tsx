@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import Alert from '@mui/material/Alert'
 import Autocomplete from '@mui/material/Autocomplete'
 import Button from '@mui/material/Button'
@@ -55,19 +55,12 @@ const fromEmployee = (e: Employee): EmployeeInput => ({
 })
 
 export function EmployeeFormDialog({ open, employee, options, onSubmit, onClose }: Props) {
-  const [form, setForm] = useState<EmployeeInput>(emptyForm)
+  // The parent remounts this dialog (via `key`) each time it opens, so initial state is derived once from props.
+  const [form, setForm] = useState<EmployeeInput>(() => (employee ? fromEmployee(employee) : emptyForm()))
   const [errors, setErrors] = useState<FormErrors>({})
   const [formError, setFormError] = useState<string | null>(null)
   const [submitting, setSubmitting] = useState(false)
   const isEdit = employee !== null
-
-  useEffect(() => {
-    if (open) {
-      setForm(employee ? fromEmployee(employee) : emptyForm())
-      setErrors({})
-      setFormError(null)
-    }
-  }, [open, employee])
 
   const set = (field: keyof EmployeeInput) => (value: string) => {
     setForm((current) => ({ ...current, [field]: value }))

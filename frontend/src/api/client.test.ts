@@ -23,7 +23,7 @@ describe('request', () => {
   it('throws an ApiError carrying field errors for 422 responses', async () => {
     mockFetch(422, { errors: { salary: ['Salary must be greater than 0'] } })
 
-    const error = await request('/x', { method: 'POST', body: {} }).catch((e) => e)
+    const error = (await request('/x', { method: 'POST', body: {} }).catch((e: unknown) => e)) as ApiError
 
     expect(error).toBeInstanceOf(ApiError)
     expect(error.status).toBe(422)
